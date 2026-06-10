@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import heroImg from "@/assets/hero-carwash.jpg";
+import logoImg from "@/assets/logo.png";
 import {
   Phone, Mail, MapPin, MessageCircle, Sparkles, Car, Crown,
   Clock, ShieldCheck, Droplets, Instagram, Send, ChevronDown,
@@ -78,13 +79,7 @@ function Landing() {
 function Logo() {
   return (
     <div className="flex items-center gap-2">
-      <div className="grid place-items-center w-10 h-10 rounded-xl bg-[var(--gradient-hero)] shadow-[var(--shadow-brand)]">
-        <Droplets className="w-5 h-5 text-white" />
-      </div>
-      <div className="leading-tight">
-        <div className="font-black text-lg">كلينو قو</div>
-        <div className="text-[10px] text-muted-foreground tracking-widest">CLEENO GO</div>
-      </div>
+      <img src={logoImg} alt="كلينو قو" className="h-12 w-auto object-contain" />
     </div>
   );
 }
@@ -363,11 +358,8 @@ function Footer() {
     <footer className="bg-foreground text-background py-12">
       <div className="container mx-auto px-4 grid md:grid-cols-3 gap-8">
         <div className="space-y-3">
-          <div className="flex items-center gap-2">
-            <div className="grid place-items-center w-10 h-10 rounded-xl bg-[var(--gradient-hero)]">
-              <Droplets className="w-5 h-5 text-white" />
-            </div>
-            <div className="font-black text-lg">كلينو قو</div>
+          <div className="bg-white rounded-xl p-2 inline-block">
+            <img src={logoImg} alt="كلينو قو" className="h-12 w-auto object-contain" />
           </div>
           <p className="text-background/70 text-sm">خدمة غسيل سيارات متنقلة احترافية تصلك أينما كنت.</p>
         </div>
