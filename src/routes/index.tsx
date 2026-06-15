@@ -353,10 +353,10 @@ function Footer({ content }: { content: SiteContent }) {
           <h4 className="font-black mb-3">تابعنا</h4>
           <div className="flex flex-wrap gap-3">
             {[
-              { href: "https://snapchat.com", icon: SnapchatIcon, label: "Snapchat" },
-              { href: "https://instagram.com", icon: Instagram, label: "Instagram" },
-              { href: "https://tiktok.com", icon: TikTokIcon, label: "TikTok" },
-              { href: "https://x.com", icon: XIcon, label: "X" },
+              { href: "https://snapchat.com/t/ip6QmNDg", icon: SnapchatIcon, label: "Snapchat" },
+              { href: "https://www.instagram.com/cleenogo?utm_source=qr&igsh=Mm5idGdzYnEwMGlx", icon: Instagram, label: "Instagram" },
+              { href: "https://www.tiktok.com/@cleenogo1?_r=1&_t=ZS-97Ee5WOwoQG", icon: TikTokIcon, label: "TikTok" },
+              { href: "https://x.com/cleenogo?s=11", icon: XIcon, label: "X" },
             ].map((s) => (
               <a key={s.label} href={s.href} target="_blank" rel="noreferrer" aria-label={s.label}
                 className="w-10 h-10 grid place-items-center rounded-full bg-background/10 hover:bg-primary hover:text-primary-foreground transition">
