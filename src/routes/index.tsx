@@ -92,6 +92,7 @@ const testimonials = [
     rating: 5,
   },
 ];
+
 function useCountdown(hours = 30 * 24 + 12, startTime = Date.now()) {
   const getRemaining = () => {
     const endTime = startTime + hours * 60 * 60 * 1000;
@@ -125,6 +126,25 @@ function useCountdown(hours = 30 * 24 + 12, startTime = Date.now()) {
     mins,
     secs,
   };
+}
+
+function Landing() {
+  const { data } = useSiteContent();
+  const c: SiteContent = data ?? DEFAULT_CONTENT;
+  return (
+    <div className="min-h-screen bg-background text-foreground font-display" dir="rtl">
+      <Header content={c} />
+      <Hero content={c} />
+      <ServiceHighlights content={c} />
+      <Subscriptions content={c} />
+      <WhyChooseUs />
+      <ServiceAreasAndTestimonials />
+      <FAQ content={c} />
+      <ClosingBanner content={c} />
+      <Footer content={c} />
+      <FloatingWhatsApp content={c} />
+    </div>
+  );
 }
 
 /* ─── HEADER (full black) ──────────────────────────────────────────────── */
