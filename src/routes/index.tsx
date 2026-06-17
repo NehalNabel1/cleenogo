@@ -1,16 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import logoImg from "@/assets/logo.png";
-// ─── IMAGE ASSETS NEEDED ────────────────────────────────────────────────────
-// Add the following images to your src/assets/ folder:
-//   hero-carwash.jpg        – man in black uniform washing a dark luxury car (night, wet, dramatic lighting)
-//   car-exterior.jpg        – shiny car exterior being washed (water droplets)
-//   car-interior.jpg        – clean leather interior with steering wheel closeup
-//   car-vip.jpg             – luxury dark-tinted car detail shot
-//   car-pkg-4.jpg           – dark luxury car for 4-wash package card
-//   car-pkg-8.jpg           – dark luxury car for 8-wash package card
-//   worker-closeup.jpg      – worker hand holding green microfibre cloth on car (for closing banner)
-// ────────────────────────────────────────────────────────────────────────────
+
 import heroImg from "@/assets/hero-carwash.jpg";
 import carExteriorImg from "@/assets/car-exterior.jpg";
 import carInteriorImg from "@/assets/car-interior.jpg";
@@ -101,47 +92,39 @@ const testimonials = [
     rating: 5,
   },
 ];
-
 function useCountdown(hours = 30 * 24 + 12, startTime = Date.now()) {
-  const [remaining, setRemaining] = useState(hours * 3600);
+  const getRemaining = () => {
+    const endTime = startTime + hours * 60 * 60 * 1000;
+
+    return Math.max(
+      0,
+      Math.floor((endTime - Date.now()) / 1000)
+    );
+  };
+
+  const [remaining, setRemaining] = useState(getRemaining());
 
   useEffect(() => {
-    setRemaining(hours * 3600);
-  }, [hours, startTime]);
+    setRemaining(getRemaining());
 
-  useEffect(() => {
-    const id = setInterval(() => {
-      const elapsed = Math.floor((Date.now() - startTime) / 1000);
-      const newRemaining = Math.max(0, hours * 3600 - elapsed);
-      setRemaining(newRemaining);
+    const interval = setInterval(() => {
+      setRemaining(getRemaining());
     }, 1000);
-    return () => clearInterval(id);
+
+    return () => clearInterval(interval);
   }, [hours, startTime]);
 
   const days = Math.floor(remaining / 86400);
   const hrs = Math.floor((remaining % 86400) / 3600);
   const mins = Math.floor((remaining % 3600) / 60);
   const secs = remaining % 60;
-  return { days, hrs, mins, secs };
-}
 
-function Landing() {
-  const { data } = useSiteContent();
-  const c: SiteContent = data ?? DEFAULT_CONTENT;
-  return (
-    <div className="min-h-screen bg-background text-foreground font-display" dir="rtl">
-      <Header content={c} />
-      <Hero content={c} />
-      <ServiceHighlights content={c} />
-      <Subscriptions content={c} />
-      <WhyChooseUs />
-      <ServiceAreasAndTestimonials />
-      <FAQ content={c} />
-      <ClosingBanner content={c} />
-      <Footer content={c} />
-      <FloatingWhatsApp content={c} />
-    </div>
-  );
+  return {
+    days,
+    hrs,
+    mins,
+    secs,
+  };
 }
 
 /* ─── HEADER (full black) ──────────────────────────────────────────────── */
