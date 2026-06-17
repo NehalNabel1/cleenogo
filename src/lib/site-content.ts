@@ -19,6 +19,7 @@ export type SiteOffer = {
   priceUnit: string;
   countdownLabel: string;
   countdownHours: number;
+  countdownStartTime: number; // Unix timestamp in ms when countdown was started
 };
 
 export type SiteContent = {
@@ -48,6 +49,7 @@ export const DEFAULT_CONTENT: SiteContent = {
     priceUnit: "ريال",
     countdownLabel: "ينتهي العرض خلال:",
     countdownHours: 36,
+    countdownStartTime: Date.now(),
   },
   services: [
     { title: "الغسيل الخارجي", desc: "غسيل شامل للهيكل الخارجي مع تلميع الإطارات والزجاج." },

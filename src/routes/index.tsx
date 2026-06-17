@@ -102,32 +102,12 @@ const testimonials = [
   },
 ];
 
-function useCountdown(hours = 30 * 24 + 12) {
-  const [startTime, setStartTime] = useState(() => {
-    try {
-      const stored = localStorage.getItem("countdown_start_time");
-      const storedHours = localStorage.getItem("countdown_hours");
-      if (stored && storedHours === String(hours)) {
-        return parseInt(stored);
-      }
-    } catch {
-      // localStorage not available
-    }
-    return Date.now();
-  });
-
+function useCountdown(hours = 30 * 24 + 12, startTime = Date.now()) {
   const [remaining, setRemaining] = useState(hours * 3600);
 
   useEffect(() => {
-    try {
-      localStorage.setItem("countdown_start_time", String(Date.now()));
-      localStorage.setItem("countdown_hours", String(hours));
-    } catch {
-      // localStorage not available
-    }
-    setStartTime(Date.now());
     setRemaining(hours * 3600);
-  }, [hours]);
+  }, [hours, startTime]);
 
   useEffect(() => {
     const id = setInterval(() => {
@@ -218,7 +198,10 @@ function Header({ content }: { content: SiteContent }) {
 
 /* ─── HERO (full black background) ────────────────────────────────────── */
 function Hero({ content }: { content: SiteContent }) {
-  const { days, hrs, mins, secs } = useCountdown(content.offer.countdownHours);
+  const { days, hrs, mins, secs } = useCountdown(
+    content.offer.countdownHours,
+    content.offer.countdownStartTime,
+  );
   return (
     <section className="relative overflow-hidden bg-[#0a0a0a] text-white">
       {/* Background image overlay */}

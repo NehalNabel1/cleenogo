@@ -174,7 +174,12 @@ function AdminPage() {
           <Field
             label="مدة العد التنازلي (ساعات)"
             value={String(content.offer.countdownHours)}
-            onChange={(v) => updateOffer(content, setContent, { countdownHours: Number(v) || 0 })}
+            onChange={(v) =>
+              updateOffer(content, setContent, {
+                countdownHours: Number(v) || 0,
+                countdownStartTime: Date.now(),
+              })
+            }
           />
         </Card>
 
