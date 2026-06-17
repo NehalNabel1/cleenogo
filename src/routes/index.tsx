@@ -205,7 +205,7 @@ function Hero({ content }: { content: SiteContent }) {
     <section className="relative overflow-hidden bg-[#0a0a0a] text-white">
       {/* Background image overlay */}
       <div className="absolute inset-0">
-        <img src={heroImg} alt="" className="h-full w-full object-cover opacity-60" />
+        <img src={heroImg} alt="" className="h-full w-full object-cover opacity-90" />
         <div className="absolute inset-0 bg-gradient-to-l from-black/20 via-black/60 to-black/90" />
       </div>
 
@@ -259,7 +259,7 @@ function Hero({ content }: { content: SiteContent }) {
         {/* Right: Offer card + countdown */}
         <div className="flex flex-col gap-4 min-w-[260px] max-w-[300px]">
           {/* Offer card */}
-          <div className="bg-white rounded-2xl p-5 text-[#0a0a0a] shadow-2xl text-right">
+          <div className="bg-gray-100 rounded-2xl p-5 text-[#0a0a0a] shadow-2xl text-right">
             <p className="text-[0.6rem] font-black uppercase tracking-widest text-[#ff6a1a] mb-1">
               {content.offer.badge}
             </p>
@@ -276,17 +276,17 @@ function Hero({ content }: { content: SiteContent }) {
           </div>
 
           {/* Countdown */}
-          <div className="bg-[#0b0b0b] border border-white/10 rounded-2xl p-4 text-center shadow-lg shadow-black/20">
-            <p className="text-[0.6rem] font-bold text-white/70 mb-3">
+          <div className="bg-gray-100 border border-white/10 rounded-2xl p-4 text-center shadow-2xl">
+            <p className="text-[0.6rem] font-bold text-gray-600 mb-3">
               {content.offer.countdownLabel}
             </p>
             <div className="flex items-center justify-center gap-2">
               <TimeBlock value={days} label="يوم" />
-              <span className="text-white/30 text-lg font-black">:</span>
+              <span className="text-gray-400 text-lg font-black">:</span>
               <TimeBlock value={hrs} label="ساعة" />
-              <span className="text-white/30 text-lg font-black">:</span>
+              <span className="text-gray-400 text-lg font-black">:</span>
               <TimeBlock value={mins} label="دقيقة" />
-              <span className="text-white/30 text-lg font-black">:</span>
+              <span className="text-gray-400 text-lg font-black">:</span>
               <TimeBlock value={secs} label="ثانية" />
             </div>
           </div>
@@ -302,7 +302,7 @@ function TimeBlock({ value, label }: { value: number; label: string }) {
       <span className="text-2xl font-black text-[#00b4c8] tabular-nums leading-none">
         {String(value).padStart(2, "0")}
       </span>
-      <span className="text-[0.55rem] text-white/40 mt-0.5">{label}</span>
+      <span className="text-[0.55rem] text-gray-500 mt-0.5">{label}</span>
     </div>
   );
 }
